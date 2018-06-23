@@ -1,0 +1,44 @@
+<form [formGroup]="formGroup">  
+    <mat-card fxLayout="column">
+    <mat-card-title>
+        Cadastro Usuário
+    </mat-card-title>
+    <mat-card-subtitle>
+        Usuários do Sistema
+    </mat-card-subtitle>
+    <mat-card-content fxFlex="100%">
+        <div fxLayout="column">
+        <div fxLayout="row" >
+            <mat-form-field fxFlex="10%">
+                <input matInput type="text" 
+                    [(ngModel)]="Usuario.codigo"
+                    placeholder="Código"
+                    formControlName="codigo">
+            </mat-form-field>
+            <span fxFlex="2%"></span>
+            <mat-form-field fxFlex="88%">
+                <input matInput type="text" 
+                    [(ngModel)]="Usuario.nome"
+                    placeholder="Nome"
+                    formControlName="nome"  required>
+                <mat-error align="start"
+                     *ngIf="formGroup.controls['nome'].hasError('required')" >
+                     Campo obrigatório</mat-error>
+            </mat-form-field>
+        </div>
+        <div fxLayout="row" >
+            <mat-form-field fxFlex="100%">
+                <input matInput type="text" 
+                    [(ngModel)]="Usuario.descricao"
+                    placeholder="Descricao"
+                    formControlName="descricao" >
+            </mat-form-field>
+        </div>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button color="primary"  [disabled]="formGroup.invalid" (click)="salvar()" mat-button>Salvar</button>
+        <button color="secondary" (click)="cancelar()" mat-button>Cancelar</button>
+    </mat-card-actions>
+</mat-card>
+</form>
